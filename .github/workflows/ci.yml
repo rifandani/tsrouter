@@ -62,6 +62,11 @@ jobs:
       - name: Clean install
         run: pnpm i --frozen-lockfile
 
+      # because we don't commit env file to the repo, we need to write it manually
+      # or else the app crashes, because we parse the env variables in the app
+      - name: Write env file based on repo secrets
+        run: echo "${{secrets.ENV_PRODUCTION }}" > .env.production
+
       - name: Install playwright browsers
         # since we are installing dependencies beforehand, we can `exec` the binaries directly, instead of `dlx`
         run: pnpm test:install
@@ -95,6 +100,11 @@ jobs:
 
       - name: Clean install
         run: pnpm i --frozen-lockfile
+
+      # because we don't commit env file to the repo, we need to write it manually
+      # or else the app crashes, because we parse the env variables in the app
+      - name: Write env file based on repo secrets
+        run: echo "${{secrets.ENV_PRODUCTION }}" > .env.production
 
       - name: Run playwright tests
         run: pnpm test

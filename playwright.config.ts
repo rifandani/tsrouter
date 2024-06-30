@@ -12,10 +12,8 @@ dotenv.config({
 /**
  * http://localhost:3301
  * http://localhost:4173
- * http://127.0.0.1:3301
- * http://127.0.0.1:4173
  */
-const port = 3301; // process.env.CI ? 4173 :
+const port = process.env.CI ? 4173 : 3301;
 const baseURL = `http://localhost:${port}`;
 
 /**
@@ -102,7 +100,7 @@ export default defineConfig({
   /* Run your local dev server before starting the tests */
   webServer: {
     url: baseURL,
-    command: 'pnpm dev', // process.env.CI ? 'pnpm build-and-preview' :
+    command: process.env.CI ? 'pnpm build-and-preview' : 'pnpm dev',
     reuseExistingServer: !process.env.CI,
     stdout: 'pipe',
     stderr: 'pipe',
