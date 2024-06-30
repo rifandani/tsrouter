@@ -2,6 +2,7 @@ import { Clock } from '#app/components/clock';
 import { Button, type ButtonVariantProps } from '#app/components/ui/button';
 import { useI18n } from '#app/hooks/use-i18n/use-i18n.hook';
 import { useRafInterval } from '#app/hooks/use-raf-interval.hook';
+import { todosDefaults } from '#todo/constants/todos.constant';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
 import { shuffle } from '@rifandani/nxact-yutiriti';
 import { useNavigate } from '@tanstack/react-router';
@@ -73,7 +74,14 @@ export function HomeClock() {
               if (btn.id === 'sort')
                 setButtons((prev) => shuffle(prev) as unknown as typeof prev);
               else if (btn.id === 'clock') setShowClock((prev) => !prev);
-              else navigate({ to: '/todos' });
+              else
+                navigate({
+                  to: '/todos',
+                  search: {
+                    limit: todosDefaults.limit,
+                    skip: todosDefaults.skip,
+                  },
+                });
             }}
           >
             {t(btn.text)}
