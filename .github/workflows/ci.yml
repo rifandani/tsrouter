@@ -80,7 +80,7 @@ jobs:
   e2e-docker:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.42.0-focal
+      image: mcr.microsoft.com/playwright:v1.44.1-focal
     steps:
       - name: Checkout branch
         uses: actions/checkout@v4.1.1
