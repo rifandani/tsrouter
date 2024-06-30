@@ -1,5 +1,7 @@
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { TanStackRouterDevtools } from '@tanstack/router-devtools';
 import React from 'react';
+import { router } from './providers/router/client';
 
 const ReactQueryDevtoolsProduction = React.lazy(() =>
   import('@tanstack/react-query-devtools/build/modern/production.js').then(
@@ -9,7 +11,12 @@ const ReactQueryDevtoolsProduction = React.lazy(() =>
   ),
 );
 
-export function Devtools() {
+export function Devtools(
+  props: React.ComponentProps<typeof ReactQueryDevtools> = {
+    buttonPosition: 'bottom-right',
+    initialIsOpen: false,
+  },
+) {
   const [showDevtools, setShowDevtools] = React.useState(false);
 
   React.useEffect(() => {
@@ -18,8 +25,10 @@ export function Devtools() {
 
   return (
     <>
+      <TanStackRouterDevtools router={router} />
+
       {/* this will only be rendered in development */}
-      <ReactQueryDevtools buttonPosition="bottom-left" initialIsOpen={false} />
+      <ReactQueryDevtools {...props} />
 
       {showDevtools && (
         <React.Suspense fallback={null}>

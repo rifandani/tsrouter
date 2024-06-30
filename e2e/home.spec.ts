@@ -45,7 +45,7 @@ test.describe('unauthorized', () => {
     const passwordInput = page.getByRole('textbox', { name: /password/i });
     const submitBtn = page.getByRole('button', { name: /login/i });
 
-    await page.waitForURL('/login');
+    await page.waitForURL(/\/login\?redirect=.+/);
     await expect(usernameInput).toBeVisible();
     await expect(passwordInput).toBeVisible();
     await expect(submitBtn).toBeVisible();

@@ -8,20 +8,17 @@
       "#assets/*": [
         "./assets/*"
       ],
-      "#shared/*": [
-        "./modules/shared/*"
-      ],
       "#home/*": [
-        "./modules/home/*"
+        "./home/*"
       ],
       "#playground/*": [
-        "./modules/playground/*"
+        "./playground/*"
       ],
       "#auth/*": [
-        "./modules/auth/*"
+        "./auth/*"
       ],
       "#todo/*": [
-        "./modules/todo/*"
+        "./todo/*"
       ]
     }
   }

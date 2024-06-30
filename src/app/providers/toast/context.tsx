@@ -1,5 +1,5 @@
-import { useColorMode } from '#shared/hooks/use-color-mode.hook';
-import { useResetState } from '#shared/hooks/use-reset-state.hook';
+import { useColorMode } from '#app/hooks/use-color-mode.hook';
+import { useResetState } from '#app/hooks/use-reset-state.hook';
 import { createContext, useMemo, type ComponentPropsWithoutRef } from 'react';
 import type { Toaster } from 'sonner';
 import { twMerge } from 'tailwind-merge';

@@ -1,3 +1,4 @@
+import { TanStackRouterVite } from '@tanstack/router-plugin/vite';
 import react from '@vitejs/plugin-react';
 import autoprefixer from 'autoprefixer';
 import process from 'node:process';
@@ -21,6 +22,7 @@ export default defineConfig({
   plugins: [
     tsconfigPaths({ loose: true }),
     react(),
+    TanStackRouterVite(),
     visualizer({
       filename: 'html/visualizer-stats.html',
     }) as unknown as PluginOption,
