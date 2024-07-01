@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
  * `import.meta.env` doesn't works, that's why we use this
  */
 dotenv.config({
-  path: './.env.development',
+  path: process.env.CI ? './.env.production' : './.env.development',
 });
 
 /**

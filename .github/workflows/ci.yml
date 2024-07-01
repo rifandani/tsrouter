@@ -44,6 +44,7 @@ jobs:
       - name: Typecheck
         run: pnpm typecheck
 
+  # TypeError: Cannot read properties of undefined (reading 'queryClient') at Object.loader
   e2e:
     timeout-minutes: 30
     runs-on: ubuntu-latest
@@ -65,7 +66,7 @@ jobs:
       # because we don't commit env file to the repo, we need to write it manually
       # or else the app crashes, because we parse the env variables in the app
       - name: Write env file based on repo secrets
-        run: echo "${{secrets.ENV_PRODUCTION }}" > .env.production
+        run: echo "${{secrets.ENV_PRODUCTION }}" > .env.production && echo "${{secrets.ENV_STAGING }}" > .env.staging && echo "${{secrets.ENV_DEVELOPMENT }}" > .env.development
 
       - name: Install playwright browsers
         # since we are installing dependencies beforehand, we can `exec` the binaries directly, instead of `dlx`
@@ -82,31 +83,31 @@ jobs:
           path: playwright-report/
           retention-days: 30
 
-  e2e-docker:
-    runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.44.1-focal
-    steps:
-      - name: Checkout branch
-        uses: actions/checkout@v4.1.1
+  # e2e-docker:
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: mcr.microsoft.com/playwright:v1.44.1-focal
+  #   steps:
+  #     - name: Checkout branch
+  #       uses: actions/checkout@v4.1.1
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
+  #     - name: Install pnpm
+  #       uses: pnpm/action-setup@v3
 
-      - name: Install node
-        uses: actions/setup-node@v4.0.2
-        with:
-          node-version: 18
+  #     - name: Install node
+  #       uses: actions/setup-node@v4.0.2
+  #       with:
+  #         node-version: 18
 
-      - name: Clean install
-        run: pnpm i --frozen-lockfile
+  #     - name: Clean install
+  #       run: pnpm i --frozen-lockfile
 
-      # because we don't commit env file to the repo, we need to write it manually
-      # or else the app crashes, because we parse the env variables in the app
-      - name: Write env file based on repo secrets
-        run: echo "${{secrets.ENV_PRODUCTION }}" > .env.production
+  #     # because we don't commit env file to the repo, we need to write it manually
+  #     # or else the app crashes, because we parse the env variables in the app
+  #     - name: Write env file based on repo secrets
+  #       run: echo "${{secrets.ENV_PRODUCTION }}" > .env.production
 
-      - name: Run playwright tests
-        run: pnpm test
-        env:
-          HOME: /root
+  #     - name: Run playwright tests
+  #       run: pnpm test
+  #       env:
+  #         HOME: /root
