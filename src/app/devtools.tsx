@@ -1,5 +1,6 @@
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import React from 'react';
+import { router } from './providers/router/client';
 
 const ReactQueryDevtoolsProduction = React.lazy(() =>
   import('@tanstack/react-query-devtools/build/modern/production.js').then(
@@ -9,19 +10,39 @@ const ReactQueryDevtoolsProduction = React.lazy(() =>
   ),
 );
 
-export function Devtools() {
-  const [showDevtools, setShowDevtools] = React.useState(false);
+const TanStackRouterDevtools = import.meta.env.PROD
+  ? () => null // Render nothing in production
+  : React.lazy(() =>
+      // Lazy load in development
+      import('@tanstack/router-devtools').then((res) => ({
+        default: res.TanStackRouterDevtools,
+        // For Embedded Mode
+        // default: res.TanStackRouterDevtoolsPanel
+      })),
+    );
+
+export function Devtools(
+  props: React.ComponentProps<typeof ReactQueryDevtools> = {
+    buttonPosition: 'bottom-right',
+    initialIsOpen: false,
+  },
+) {
+  const [showRqDevtools, setShowRqDevtools] = React.useState(false);
 
   React.useEffect(() => {
-    window.toggleRqDevtools = () => setShowDevtools((prev) => !prev);
+    window.toggleRqDevtools = () => setShowRqDevtools((prev) => !prev);
   }, []);
 
   return (
     <>
-      {/* this will only be rendered in development */}
-      <ReactQueryDevtools buttonPosition="bottom-left" initialIsOpen={false} />
+      <React.Suspense>
+        <TanStackRouterDevtools router={router} />
+      </React.Suspense>
 
-      {showDevtools && (
+      {/* this will only be rendered in development */}
+      <ReactQueryDevtools {...props} />
+
+      {showRqDevtools && (
         <React.Suspense fallback={null}>
           <ReactQueryDevtoolsProduction />
         </React.Suspense>

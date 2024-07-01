@@ -50,9 +50,6 @@ importers:
       react-hook-form:
         specifier: ^7.52.0
         version: 7.52.0(react@18.3.1)
-      react-router-dom:
-        specifier: ^6.23.1
-        version: 6.23.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-stately:
         specifier: ^3.31.1
         version: 3.31.1(react@18.3.1)
@@ -1419,10 +1416,6 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0
 
-  '@remix-run/router@1.16.1':
-    resolution: {integrity: sha512-es2g3dq6Nb07iFxGk5GuHN20RwBZOsuDQN7izWIisUcv9r+d2C5jQxqmgkdebXgReWfiyUabcki6Fg77mSNrig==}
-    engines: {node: '>=14.0.0'}
-
   '@rifandani/nxact-yutiriti@1.2.2':
     resolution: {integrity: sha512-A6iKy0hwA+zZ5+PyU7OAGP1BEK1cLm2PJ9OoBjgsyaJch0ILjBu0+TwDwYETY7nSkG4iydetKJJx+a+iHfi/9w==}
     engines: {node: '>=16.x', npm: '>=8.x'}
@@ -2780,19 +2773,6 @@ packages:
   react-refresh@0.14.2:
     resolution: {integrity: sha512-jCvmsr+1IUSMUyzOkRcvnVbX3ZYC6g9TDrDbFuFmRDq7PD4yaGbLKNQL6k2jnArV8hjYxh7hVhAZB6s9HDGpZA==}
     engines: {node: '>=0.10.0'}
-
-  react-router-dom@6.23.1:
-    resolution: {integrity: sha512-utP+K+aSTtEdbWpC+4gxhdlPFwuEfDKq8ZrPFU65bbRJY+l706qjR7yaidBpo3MSeA/fzwbXWbKBI6ftOnP3OQ==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      react: '>=16.8'
-      react-dom: '>=16.8'
-
-  react-router@6.23.1:
-    resolution: {integrity: sha512-fzcOaRF69uvqbbM7OhvQyBTFDVrrGlsFdS3AL+1KfIBtGETibHzi3FkoTRyiDJnWNc2VxrfvR+657ROHjaNjqQ==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      react: '>=16.8'
 
   react-simple-animate@3.5.2:
     resolution: {integrity: sha512-xLE65euP920QMTOmv5haPlml+hmOPDkbIr5WeF7ADIXWBYt5kW/vwpNfWg8EKMab8aeDxIZ6QjffVh8v2dUyhg==}
@@ -4999,8 +4979,6 @@ snapshots:
       '@react-types/shared': 3.23.1(react@18.3.1)
       react: 18.3.1
 
-  '@remix-run/router@1.16.1': {}
-
   '@rifandani/nxact-yutiriti@1.2.2': {}
 
   '@rollup/rollup-android-arm-eabi@4.13.0':
@@ -6366,18 +6344,6 @@ snapshots:
   react-is@16.13.1: {}
 
   react-refresh@0.14.2: {}
-
-  react-router-dom@6.23.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
-    dependencies:
-      '@remix-run/router': 1.16.1
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      react-router: 6.23.1(react@18.3.1)
-
-  react-router@6.23.1(react@18.3.1):
-    dependencies:
-      '@remix-run/router': 1.16.1
-      react: 18.3.1
 
   react-simple-animate@3.5.2(react-dom@18.3.1(react@18.3.1)):
     dependencies:

@@ -1,5 +1,10 @@
 {
 	"$schema": "https://biomejs.dev/schemas/1.8.1/schema.json",
+	"files": {
+		"ignore": [
+			"**/*.gen.ts"
+		]
+	},
 	"organizeImports": {
 		"enabled": false
 	},
