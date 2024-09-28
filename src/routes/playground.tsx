@@ -56,7 +56,7 @@ function Component() {
       </TabPanel>
 
       <TabPanel id="tiptap" className="size-full px-5">
-        <Editor value="" onValueChange={(value) => {}} />
+        <Editor value="" onValueChange={() => {}} />
       </TabPanel>
     </Tabs>
   );
