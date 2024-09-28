@@ -12,5 +12,9 @@ declare global {
      * Toggle react query devtools in production
      */
     toggleRqDevtools: () => void;
+    /**
+     * Toggle react router devtools in production
+     */
+    toggleRrDevtools: () => void;
   }
 }
