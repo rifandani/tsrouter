@@ -15,7 +15,8 @@ export const authLoginResponseSchema = z.object({
   lastName: z.string(),
   gender: z.union([z.literal('male'), z.literal('female')]),
   image: z.string().url(),
-  token: z.string(),
+  accessToken: z.string(),
+  refreshToken: z.string(),
 });
 // #endregion API SCHEMAS
 
@@ -45,9 +46,12 @@ export const authRepositories = {
               if (response.status === 200) {
                 const data = (await response.json()) as AuthLoginResponseSchema;
 
-                if ('token' in data) {
+                if ('accessToken' in data) {
                   // set 'Authorization' headers
-                  request.headers.set('Authorization', `Bearer ${data.token}`);
+                  request.headers.set(
+                    'Authorization',
+                    `Bearer ${data.accessToken}`,
+                  );
                 }
               }
             },
